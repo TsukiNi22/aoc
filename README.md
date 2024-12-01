@@ -1,2 +1,2 @@
-# aoc
-Advent of code [2024]
+## Advent of Code
+- Advent of code [2024]
