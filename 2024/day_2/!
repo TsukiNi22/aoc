@@ -1,0 +1,64 @@
+##
+## PHYTON PROJECT, 2024
+## main.py
+## File description:
+## You know, I don t think there are good or bad descriptions,
+## for me, life is above all about functions...
+##
+
+lines = []
+while True:
+    line = input()
+    if line.lower() == 's':
+        break
+    lines.append(line)
+
+def main_silver(lines):
+    lines_split = [line.split() for line in lines]
+    report_true = 0
+
+    for line in lines_split:
+        signe = -1
+
+        for i in range(len(line) - 1):
+            dif = int(line[i]) - int(line[i + 1])
+            if (signe == -1 and dif < 0):
+                signe = 1
+            elif (signe == -1):
+                signe = 0
+            if (signe == 1 and not (dif <= -1 and dif >= -3)):
+                break
+            if (signe == 0 and not (dif >= 1 and dif <= 3)):
+                break
+            if (i == len(line) - 2):
+                report_true += 1
+    print(report_true)
+
+def main_gold(lines):
+    lines_split = [line.split() for line in lines]
+    report_true = 0
+
+    for line in lines_split:
+        signe = -1
+        joker = 0
+
+        for i in range(len(line) - 1):
+            if (i + 1 + joker <= len(line) - 2):
+                dif = int(line[i + joker]) - int(line[i + 1 + joker])
+                print(line[i + joker], line[i + 1 + joker], dif, joker, line)
+            if (signe == -1 and dif < 0):
+                signe = 1
+            elif (signe == -1):
+                signe = 0
+            if (signe == 1 and not (dif <= -1 and dif >= -3)):
+                joker += 1
+            if (signe == 0 and not (dif >= 1 and dif <= 3)):
+                joker += 1
+            if (joker > 1):
+                break
+            if (i == len(line) - 2):
+                report_true += 1
+                print(line)
+    print(report_true)
+
+main_gold(lines)
