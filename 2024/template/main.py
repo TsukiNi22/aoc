@@ -11,12 +11,15 @@ while True:
     line = input()
     if line.lower() == 's':
         break
-    lines.append(line)
+    lines.append(line.split())
+    for i in range(len(lines[-1])):
+        lines[-1][i] = int(lines[-1][i])
+    lines[-1] = list(map(lambda nbr: int(nbr), lines[-1]))
 
-def main_silver(lines):
+def silver(lines):
     print(lines)
 
-def main_gold(lines):
+def gold(lines):
     print(lines)
 
-main_silver(lines)
+silver(lines)
